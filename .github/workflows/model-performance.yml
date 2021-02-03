@@ -32,7 +32,7 @@ jobs:
           | main          | $main_eval    | \n\
           | new branch    | $branch_eval  | \n\
           "'
-          echo "::set-output name=table::$table"
+          echo "::set-output name=table::$branch_eval"
 
       - uses: actions/github-script@v3
         with:
