@@ -4,6 +4,11 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      - name: Run evaluation on main and branch
+      - id: eval
+        run: |
+        echo "::set-output name=main_eval::strawberry"
+
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -12,5 +17,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
+              body: '👋 Thanks for reporting! ${{ steps.eval.outputs.main_eval}}'
             })
