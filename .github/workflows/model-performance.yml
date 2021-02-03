@@ -21,12 +21,19 @@ jobs:
         id: eval
         run: |
           branch_eval=`python eval.py`
-          echo "::set-output name=branch_eval::$branch_eval"
           
           git fetch --prune 
           git checkout main
           main_eval=`python eval.py`
-          echo "::set-output name=main_eval::$main_eval"
+
+          table='echo " \                                                                                                                                                                               yonatang@bottomusual-lm
+          | branch        | accuracy      | \n\
+          | ------------- |:-------------:| \n\
+          | main          | $main_eval    | \n\
+          | new branch    | $branch_eval  | \n\
+          "'
+          echo "::set-output name=table::$table"
+
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -35,5 +42,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '${{ steps.eval.outputs.main_eval}} ${{ steps.eval.outputs.branch_eval}}'
+              body: '${{ steps.eval.outputs.table}}'
             })
