@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run evaluation on main and branch
-      - id: eval
+        id: eval
         run: |
           echo "::set-output name=main_eval::strawberry"
       - uses: actions/github-script@v3
