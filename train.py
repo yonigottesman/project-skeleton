@@ -62,9 +62,7 @@ def train(trainset: pd.DataFrame) -> Pipeline:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lr', default=0.0005, type=float)
     parser.add_argument('--data_path', default='.cache', type=str)
-    parser.add_argument('--epochs', default=80, type=int)
     parser.add_argument('--model_path',
                         default=f'model_{MODEL_VERSION}.pkl',
                         type=str)
