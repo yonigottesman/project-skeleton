@@ -2,15 +2,16 @@ on:
   pull_request:
 
 jobs:
-  test:
+  comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: mshick/add-pr-comment@v1
+      - uses: actions/github-script@v3
         with:
-          message: |
-            **Hello**
-            🌏
-            !
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
