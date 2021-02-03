@@ -1,16 +1,39 @@
-on:
-  pull_request:
+on: [pull_request]
 
 jobs:
-  test:
+  comment:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6]
+        
     steps:
-      - uses: mshick/add-pr-comment@v1
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          message: |
-            **Hello**
-            🌏
-            !
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run evaluation on main and branch
+        id: eval
+        run: |
+          branch_eval=`python eval.py`
+          echo "::set-output name=branch_eval::$branch_eval"
+          
+          git fetch --prune 
+          git checkout main
+          main_eval=`python eval.py`
+          echo "::set-output name=main_eval::$main_eval"
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ steps.eval.outputs.main_eval}} ${{ steps.eval.outputs.branch_eval}}'
+            })
