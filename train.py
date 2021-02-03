@@ -9,6 +9,7 @@ from nltk.corpus import twitter_samples
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
+
 from sentiment import MODEL_VERSION
 from sentiment.processing import tokenize
 
@@ -73,5 +74,5 @@ if __name__ == "__main__":
     dump(pipeline, args.model_path)
     train_accuracy = eval_accuracy(pipeline, trainset)
     test_accuracy = eval_accuracy(pipeline, testset)
-    print(f'train accuracy: {train_accuracy:.3f}.'
+    print(f'train accuracy: {train_accuracy:.3f}. '
           f'test accuracy: {test_accuracy:.3f}')
