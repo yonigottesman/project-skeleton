@@ -27,10 +27,10 @@ jobs:
           main_eval=`python eval.py`
 
           table=$(echo " \
-          | branch        | accuracy      | \n\
-          | ------------- |:-------------:| \n\
-          | main          | $main_eval    | \n\
-          | new branch    | $branch_eval  | \n\
+          | branch                 | accuracy      | \n\
+          | -------------          |:-------------:| \n\
+          | main                   | $main_eval    | \n\
+          | echo ${GITHUB_REF##*/} | $branch_eval  | \n\
           ")
 
           echo "::set-output name=table::$table"
