@@ -7,8 +7,7 @@ jobs:
       - name: Run evaluation on main and branch
       - id: eval
         run: |
-        echo "::set-output name=main_eval::strawberry"
-
+          echo "::set-output name=main_eval::strawberry"
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
