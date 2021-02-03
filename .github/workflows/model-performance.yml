@@ -26,7 +26,7 @@ jobs:
           git checkout main
           main_eval=`python eval.py`
 
-          table='echo " \                                                                                                                                                                               yonatang@bottomusual-lm
+          table='echo " \
           | branch        | accuracy      | \n\
           | ------------- |:-------------:| \n\
           | main          | $main_eval    | \n\
