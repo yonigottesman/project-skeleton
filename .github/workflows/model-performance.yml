@@ -26,13 +26,14 @@ jobs:
           git checkout main
           main_eval=`python eval.py`
 
-          table='echo " \
+          table=$(echo " \
           | branch        | accuracy      | \n\
           | ------------- |:-------------:| \n\
           | main          | $main_eval    | \n\
           | new branch    | $branch_eval  | \n\
-          "'
-          echo "::set-output name=table::$branch_eval"
+          ")
+
+          echo "::set-output name=table::$table"
 
       - uses: actions/github-script@v3
         with:
