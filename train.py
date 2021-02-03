@@ -12,6 +12,7 @@ from sklearn.pipeline import Pipeline
 
 from sentiment import MODEL_VERSION
 from sentiment.processing import tokenize
+from sentiment import MODEL_VERSION
 
 
 def download_dataset(path: str) -> None:
@@ -64,7 +65,9 @@ if __name__ == "__main__":
     parser.add_argument('--lr', default=0.0005, type=float)
     parser.add_argument('--data_path', default='.cache', type=str)
     parser.add_argument('--epochs', default=80, type=int)
-    parser.add_argument('--model_path', default='model_v0.pkl', type=str)
+    parser.add_argument('--model_path',
+                        default=f'model_{MODEL_VERSION}.pkl',
+                        type=str)
     args = parser.parse_args()
 
     trainset, testset = get_datasets(args.data_path)
