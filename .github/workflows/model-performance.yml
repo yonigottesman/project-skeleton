@@ -22,7 +22,8 @@ jobs:
         run: |
           branch_eval=`python eval.py`
           echo "::set-output name=branch_eval::$branch_eval"
-
+          
+          git fetch --prune 
           git checkout main
           main_eval=`python eval.py`
           echo "::set-output name=main_eval::$main_eval"
