@@ -21,7 +21,11 @@ jobs:
         id: eval
         run: |
           branch_eval=`python eval.py`
-          echo "::set-output name=main_eval::$branch_eval"
+          echo "::set-output name=branch_eval::$branch_eval"
+
+          git checkout main
+          main_eval=`python eval.py`
+          echo "::set-output name=main_eval::$main_eval"
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -30,5 +34,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting! ${{ steps.eval.outputs.main_eval}}'
+              body: '${{ steps.eval.outputs.main_eval}} ${{ steps.eval.outputs.branch_eval}}'
             })
