@@ -12,7 +12,6 @@ from sklearn.pipeline import Pipeline
 
 from sentiment import MODEL_VERSION
 from sentiment.processing import tokenize
-from sentiment import MODEL_VERSION
 
 
 def download_dataset(path: str) -> None:
