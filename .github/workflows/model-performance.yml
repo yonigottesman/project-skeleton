@@ -29,9 +29,9 @@ jobs:
 
           table=$(echo " \ 
           | branch                 |SHA|               | accuracy      | \n\
-          | :-------------:        |:---------------:  |:-------------:| \n\
-          | main                   |    $main_sha      | $main_eval    | \n\
-          | ${{ github.head_ref }} |  ${{github.sha}}  | $branch_eval  | \n\
+          | :-------------:|:---------------:|:-------------:| \n\
+          | main                   |   aaa             | $main_eval    | \n\
+          | ${{ github.head_ref }} |  bbb              | $branch_eval  | \n\
           ")
 
           echo "::set-output name=table::$table"
