@@ -27,7 +27,7 @@ jobs:
           main_sha='git rev-parse --short HEAD'
           main_eval=`python eval.py`
 
-          table=$(echo " \ 
+          table=$(echo " \
           | branch                 |  accuracy     | \n\
           | :-------------:        |:-------------:| \n\
           | main                   | $main_eval    | \n\
