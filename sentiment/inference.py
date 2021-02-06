@@ -2,6 +2,7 @@ import urllib.request
 from pathlib import Path
 from typing import List
 
+import numpy as np
 from joblib import load
 from sklearn.pipeline import Pipeline
 
@@ -22,8 +23,8 @@ class SentimentInference(object):
 
         self.pipeline: Pipeline = load(model_path)
 
-    def inference(self, tweet: str) -> int:
+    def inference(self, tweet: str) -> np.int64:
         return self.pipeline.predict([tweet])[0]
 
-    def inference_batch(self, tweets: List[str]):
+    def inference_batch(self, tweets: List[np.int64]):
         return self.pipeline.predict(tweets)

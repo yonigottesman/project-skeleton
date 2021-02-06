@@ -2,3 +2,9 @@ __pycache__
 .history
 venv
 .env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.ipynb_checkpoints/
