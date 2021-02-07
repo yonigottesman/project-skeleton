@@ -1,0 +1,17 @@
+branch-defaults:
+  v1:
+    environment: sentiment-env
+global:
+  application_name: sentiment-app
+  branch: null
+  default_ec2_keyname: null
+  default_platform: docker
+  default_region: us-west-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application
