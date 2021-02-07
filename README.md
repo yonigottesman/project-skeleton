@@ -11,7 +11,7 @@ CI/CD workflow
 7. github-action deploy model to production.
 8. goto step 1.
 
-Checkout [this](https://github.com/yonigottesman/sentiment/pull/14) pr. Tests have passed and a comment has been made to compare main model and new model on testset.
+Checkout [this](https://github.com/yonigottesman/sentiment/pull/15) pr. Tests have passed and a comment has been made to compare main model and new model on testset.
 
 model served on aws elasticbeanstalk and deployed using 
 
