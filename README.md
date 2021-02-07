@@ -13,7 +13,7 @@ CI/CD workflow
 
 Checkout [this](https://github.com/yonigottesman/sentiment/pull/15) pr. Tests have passed and a comment has been made to compare main model and new model on testset.
 
-model served on aws elasticbeanstalk and deployed using 
+model served on aws elasticbeanstalk and deployed using [eb-deploy.yml](https://github.com/yonigottesman/sentiment/blob/main/.github/workflows/eb-deploy.yml)
 
 
 
