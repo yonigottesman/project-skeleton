@@ -1,5 +1,7 @@
 from typing import List
 
+from nltk.tokenize import TweetTokenizer
+
 
 def tokenize(tweet: str) -> List[str]:
     tokenizer = TweetTokenizer(preserve_case=False,
