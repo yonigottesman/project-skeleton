@@ -7,7 +7,7 @@ from joblib import load
 from sklearn.pipeline import Pipeline
 
 from sentiment import MODEL_VERSION
-from sentiment.processing import tokenize
+from sentiment.processing import tokenize  # noqa: F401
 
 
 class SentimentInference(object):
