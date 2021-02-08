@@ -8,3 +8,6 @@ def test_inference():
 
     sentiment_neg = inferencer.inference('bad sad')
     assert sentiment_neg == 0
+    
+def test_github():
+    assert True == False
