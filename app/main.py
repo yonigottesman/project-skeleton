@@ -9,7 +9,7 @@ inferencer = SentimentInference()
 
 
 @app.get("/predict")
-def read_item(tweet: str):
+def predict(tweet: str):
     prob = inferencer.inference(tweet)
     return {
         'version': MODEL_VERSION,
